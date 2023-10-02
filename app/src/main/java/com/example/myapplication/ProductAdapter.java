@@ -20,10 +20,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
   private final ArrayList<Product> productArrayList;
   private OnClickListener onClickListener;
 
-  public ProductAdapter(Context context, ArrayList<Product> courseModelArrayList,
+  public ProductAdapter(Context context, ArrayList<Product> productArrayList,
       OnClickListener onClickListener) {
     this.context = context;
-    this.productArrayList = courseModelArrayList;
+    this.productArrayList = productArrayList;
     this.onClickListener = onClickListener;
   }
 

@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
       }
       try {
         urlConnection = (HttpsURLConnection) Objects.requireNonNull(url).openConnection();
-        urlConnection.setRequestProperty("User-Agent", "my-rest-app-v0.1");
+        urlConnection.setRequestProperty("User-Agent", "androidTestApp");
 
         //TODO
         String filename1 = "products.json";
