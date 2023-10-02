@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Android Test Project</string>
+    <string name="name" />
+    <string name="price" />
+    <string name="image" />
+</resources>
