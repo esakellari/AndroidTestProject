@@ -39,9 +39,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
   public void onBindViewHolder(@NonNull ProductAdapter.ViewHolder holder, int position) {
     Product product = productArrayList.get(position);
     holder.productNameTextView.setText(product.getProductName());
-    holder.productPriceTextView.setText(product.getPrice());
+    holder.productPriceTextView.setText(product.getProductPrice());
 
-    File thumbnailFile = new File(product.getThumbnailPath());
+    File thumbnailFile = new File(product.getProductThumbnailPath());
     if (thumbnailFile.exists()) {
       holder.productThumbnailView.setImageBitmap(
           BitmapFactory.decodeFile(thumbnailFile.getAbsolutePath()));
