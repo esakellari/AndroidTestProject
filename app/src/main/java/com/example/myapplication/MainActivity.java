@@ -48,13 +48,6 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    //https://fakeimg.pl/150x150/?text=lorem%20tristique
-
-    String imageUrl = "https://cdn-icons-png.flaticon.com/128/4598/4598380.png";
-    String imageUrl2 = "https://fakeimg.pl/150x150/?text=lorem%20tristique";
-
-    // new ImageDownloadTask().execute(imageUrl2,"4444.PNG");
-
     new MyTask().execute();
 
     swipeRefreshLayout = findViewById(R.id.swiperefresh);
@@ -68,10 +61,9 @@ public class MainActivity extends AppCompatActivity {
   private class ImageDownloadTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
-      //  String imageUrl = "https://cdn-icons-png.flaticon.com/128/4598/4598380.png";
       URL url = null;
       HttpURLConnection urlConnection;
-      InputStream in = null;
+      InputStream in;
       Bitmap bitmap = null;
 
       try {
@@ -123,10 +115,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPostExecute(String s) {
       super.onPostExecute(s);
-      Toast.makeText(
-          MainActivity.this.getApplicationContext(),
-          "Image saved",
-          Toast.LENGTH_LONG).show();
     }
   }
 
@@ -186,22 +174,26 @@ public class MainActivity extends AppCompatActivity {
             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
             //Download the thumbnail for this product
-            String imageUrl = jsonObject.getString("Thumbnail");
-            imageUrl = imageUrl.replace("http", "https");
+            String thumbnailUrl = jsonObject.getString("Thumbnail");
+            thumbnailUrl = thumbnailUrl.replace("http", "https");
 
-            // https://cdn-icons-png.flaticon.com/128/4598/4598380.png";
             String path = null;
             String id = String.valueOf(jsonObject.getInt("Id"));
             try {
-              path = new ImageDownloadTask().execute(imageUrl, id + ".PNG").get();
+              path = new ImageDownloadTask().execute(thumbnailUrl, id + "thumbnail.PNG").get();
             } catch (ExecutionException | InterruptedException e) {
               e.printStackTrace();
             }
 
-            String des = jsonObject.getString("Description");
+            //Get Product description
+            String des = null;
+            if (jsonObject.has("Description")) {
+              des = jsonObject.getString("Description");
+            }
             Product product = new Product(jsonObject.getString("Name"),
-                                          jsonObject.getString("Price"), 1,
-                                          jsonObject.getString("Description"), path);
+                                          jsonObject.getString("Price"),
+                                          jsonObject.getString("Image"),
+                                          des, path);
 
             entryList.add(product);
           }

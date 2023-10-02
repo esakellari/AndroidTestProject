@@ -8,18 +8,18 @@ public class Product implements Serializable {
   private long id;
   private final String productName;
   private final String productPrice;
-  private int productImage;
+  private String productImage;
   private String thumbnail;
-  private String imagePath;
+  private String thumbnailPath;
   private final String productDescription;
 
-  public Product(String productName, String productPrice, int productImage,
+  public Product(String productName, String productPrice, String productImage,
       String productDescription, String imagePAth) {
     this.productName = productName;
     this.productPrice = productPrice;
     this.productImage = productImage;
     this.productDescription = productDescription;
-    this.imagePath = imagePAth;
+    this.thumbnailPath = imagePAth;
   }
 
   public String getProductName() {
@@ -34,7 +34,7 @@ public class Product implements Serializable {
     return productDescription;
   }
 
-  public String getImage() {
-    return imagePath;
+  public String getThumbnailPath() {
+    return thumbnailPath;
   }
 }

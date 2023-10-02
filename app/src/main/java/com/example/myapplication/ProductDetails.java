@@ -23,7 +23,6 @@ public class ProductDetails extends AppCompatActivity {
           MainActivity.NEXT_SCREEN);
     }
     if (product != null) {
-      Toast.makeText(getApplicationContext(), "Item Clicked44444444444", Toast.LENGTH_LONG).show();
       setContentView(R.layout.product_details);
       final TextView nameTextView = (TextView) findViewById(R.id.display_name);
       nameTextView.setText(product.getProductName());

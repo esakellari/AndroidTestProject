@@ -41,17 +41,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     holder.productNameTextView.setText(product.getProductName());
     holder.productPriceTextView.setText(product.getPrice());
 
-    File imgFile = new File(product.getImage());
-    if (imgFile.exists()) {
-
-      Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
-
-      // ImageView myImage = (ImageView) findViewById(R.id.imageviewTest);
-
-      // myImage.setImageBitmap(myBitmap);
-      holder.productImageView.setImageBitmap(myBitmap);
+    File thumbnailFile = new File(product.getThumbnailPath());
+    if (thumbnailFile.exists()) {
+      holder.productThumbnailView.setImageBitmap(
+          BitmapFactory.decodeFile(thumbnailFile.getAbsolutePath()));
     }
-    ;
 
     holder.bind(productArrayList.get(position), onClickListener);
   }
@@ -68,13 +62,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
   public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView productNameTextView;
     private final TextView productPriceTextView;
-    private final ImageView productImageView;
+    private final ImageView productThumbnailView;
 
     public ViewHolder(@NonNull View itemView) {
       super(itemView);
       productNameTextView = itemView.findViewById(R.id.name);
       productPriceTextView = itemView.findViewById(R.id.price);
-      productImageView = itemView.findViewById(R.id.image);
+      productThumbnailView = itemView.findViewById(R.id.image);
       itemView.setOnClickListener(this);
     }
 
