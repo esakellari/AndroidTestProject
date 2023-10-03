@@ -16,7 +16,6 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -70,15 +69,6 @@ public class MainActivity extends AppCompatActivity {
         urlConnection = (HttpsURLConnection) Objects.requireNonNull(url).openConnection();
         urlConnection.setRequestProperty("User-Agent", "androidTestApp");
 
-        //TODO
-//        String filename1 = "products.json";
-//        File file1 = new File(MainActivity.this.getFilesDir(), filename1);
-//        BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter(file1));
-//        bufferedWriter1.write(DummyJson.getDummyJson());
-//        //bufferedWriter.write(stringBuilder.toString());
-//        bufferedWriter1.close();
-//        return filename1;
-
         if (urlConnection.getResponseCode() == 200) {
           InputStream inputStream = urlConnection.getInputStream();
           bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -113,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
           }
         }
       }
-       return null;
+      return null;
     }
 
     @Override
@@ -164,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
           }
 
           productAdapter = new ProductAdapter(
-              MainActivity.this, entryList,
+              entryList,
               product -> {
                 Intent intent = new Intent(MainActivity.this, ProductDetails.class);
                 intent.putExtra(NEXT_SCREEN, product);

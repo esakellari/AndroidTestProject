@@ -1,15 +1,13 @@
 package com.example.myapplication;
 
-import android.graphics.Bitmap;
-
 import java.io.Serializable;
 
 public class Product implements Serializable {
-  private String productId;
+  private final String productId;
   private final String productName;
   private final String productPrice;
-  private String productImageURL;
-  private String productThumbnailPath;
+  private final String productImageURL;
+  private final String productThumbnailPath;
   private final String productDescription;
 
   public Product(String productId, String productName, String productPrice, String productImageURL,

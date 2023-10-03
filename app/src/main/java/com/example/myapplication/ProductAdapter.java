@@ -1,7 +1,5 @@
 package com.example.myapplication;
 
-import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +14,11 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-  private final Context context;
   private final ArrayList<Product> productArrayList;
-  private OnClickListener onClickListener;
+  private final OnClickListener onClickListener;
 
-  public ProductAdapter(Context context, ArrayList<Product> productArrayList,
+  public ProductAdapter(ArrayList<Product> productArrayList,
       OnClickListener onClickListener) {
-    this.context = context;
     this.productArrayList = productArrayList;
     this.onClickListener = onClickListener;
   }

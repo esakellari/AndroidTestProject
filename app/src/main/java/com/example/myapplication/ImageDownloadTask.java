@@ -66,8 +66,8 @@ public class ImageDownloadTask extends AsyncTask<String, Void, String> {
     }
 
     try {
-      bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-      out.flush();
+      Objects.requireNonNull(bitmap).compress(Bitmap.CompressFormat.PNG, 100, out);
+      Objects.requireNonNull(out).flush();
       out.close();
       MediaScannerConnection.scanFile(this.context,
                                       new String[]{imageFile.getAbsolutePath()}, null,

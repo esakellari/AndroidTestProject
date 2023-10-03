@@ -5,12 +5,12 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class ProductDetails extends AppCompatActivity {
@@ -29,9 +29,9 @@ public class ProductDetails extends AppCompatActivity {
     }
     if (product != null) {
       setContentView(R.layout.product_details);
-      final TextView nameTextView = (TextView) findViewById(R.id.display_name);
+      final TextView nameTextView = findViewById(R.id.display_name);
       nameTextView.setText(product.getProductName());
-      final TextView priceTextView = (TextView) findViewById(R.id.display_price);
+      final TextView priceTextView = findViewById(R.id.display_price);
       priceTextView.setText(product.getProductPrice());
       final TextView descriptionTextView = findViewById(R.id.display_description);
       descriptionTextView.setText(product.getProductDescription());
@@ -46,7 +46,7 @@ public class ProductDetails extends AppCompatActivity {
       } catch (ExecutionException | InterruptedException e) {
         e.printStackTrace();
       }
-      File imageFile = new File(imagePath);
+      File imageFile = new File(Objects.requireNonNull(imagePath));
       if (imageFile.exists()) {
         imageView.setImageBitmap(
             BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
