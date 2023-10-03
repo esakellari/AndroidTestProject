@@ -1,4 +1,8 @@
 # AndroidTestProject
+
+
+**Note: the refresh action is done with swipe down.
+
 ANDROID TEST PROJECT
 
 An app that displays a list of products and its details.

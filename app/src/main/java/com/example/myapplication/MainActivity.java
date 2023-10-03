@@ -71,39 +71,33 @@ public class MainActivity extends AppCompatActivity {
         urlConnection.setRequestProperty("User-Agent", "androidTestApp");
 
         //TODO
-        String filename1 = "products.json";
-        File file1 = new File(MainActivity.this.getFilesDir(), filename1);
-        BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter(file1));
-        bufferedWriter1.write(DummyJson.getDummyJson());
-        //bufferedWriter.write(stringBuilder.toString());
-        bufferedWriter1.close();
-        return filename1;
+//        String filename1 = "products.json";
+//        File file1 = new File(MainActivity.this.getFilesDir(), filename1);
+//        BufferedWriter bufferedWriter1 = new BufferedWriter(new FileWriter(file1));
+//        bufferedWriter1.write(DummyJson.getDummyJson());
+//        //bufferedWriter.write(stringBuilder.toString());
+//        bufferedWriter1.close();
+//        return filename1;
 
-//        if (urlConnection.getResponseCode() == 200) {
-//          InputStream inputStream = urlConnection.getInputStream();
-//          bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-//          StringBuilder stringBuilder = new StringBuilder();
-//          String line;
-//
-//          while ((line = bufferedReader.readLine()) != null) {
-//            stringBuilder.append(line).append("\n");
-//          }
-//
-//          //Save the JSON data locally
-//          String filename = "products.json";
-//          File file = new File(MainActivity.this.getFilesDir(), filename);
-//          BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
-//          bufferedWriter.write(DummyJson.getDummyJson());
-//          //bufferedWriter.write(stringBuilder.toString());
-//          bufferedWriter.close();
-//
-//          return filename;
-//        }
-//
-//
-//
-//
-//
+        if (urlConnection.getResponseCode() == 200) {
+          InputStream inputStream = urlConnection.getInputStream();
+          bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+          StringBuilder stringBuilder = new StringBuilder();
+          String line;
+
+          while ((line = bufferedReader.readLine()) != null) {
+            stringBuilder.append(line).append("\n");
+          }
+
+          //Save the JSON data locally
+          String filename = "products.json";
+          File file = new File(MainActivity.this.getFilesDir(), filename);
+          BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file));
+          bufferedWriter.write(stringBuilder.toString());
+          bufferedWriter.close();
+
+          return filename;
+        }
       } catch (IOException e) {
         e.printStackTrace();
         return null;
@@ -119,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
           }
         }
       }
-     // return null;
+       return null;
     }
 
     @Override
