@@ -21,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         urlConnection = (HttpsURLConnection) Objects.requireNonNull(url).openConnection();
         urlConnection.setRequestProperty("User-Agent", "androidTestApp");
 
-        if (urlConnection.getResponseCode() == 200) {
+        if (urlConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
           InputStream inputStream = urlConnection.getInputStream();
           bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
           StringBuilder stringBuilder = new StringBuilder();
